@@ -34,7 +34,12 @@ if st.button("Analyse"):
 
         # Predict framing
         political_pred = political_model.predict(embedding)[0]
-        regional_pred = regional_model.predict(embedding)[0]
+       regional_prob = regional_model.predict_proba(embedding)[0][1]
+
+      if 0.40 <= regional_prob <= 0.60:
+       regional_pred = "Uncertain"
+     else:
+      regional_pred = 1 if regional_prob > 0.60 else 0
         socioeconomic_pred = socioeconomic_model.predict(embedding)[0]
 
         st.subheader("Prediction Results")
