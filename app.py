@@ -37,7 +37,10 @@ if st.button("Analyse"):
         else:
             regional_pred = 1 if regional_prob > 0.60 else 0
 
-        socioeconomic_pred = 1 if socioeconomic_prob >= thresholds["socioeconomic"] else 0
+        if 0.40 <= socioeconomic_prob <= 0.60:
+            socioeconomic_pred = "Uncertain"
+        else:
+            socioeconomic_pred = 1 if socioeconomic_prob > 0.60 else 0
 
         st.subheader("Prediction Results")
 
@@ -53,7 +56,7 @@ if st.button("Analyse"):
 
         st.write(
             "Socioeconomic framing:",
-            "Detected" if socioeconomic_pred == 1 else "Not detected"
+            "Uncertain" if socioeconomic_pred == "Uncertain" else ("Detected" if socioeconomic_pred == 1 else "Not detected")
         )
 
     else:
