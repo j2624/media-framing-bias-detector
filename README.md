@@ -38,3 +38,4 @@ The app returns whether each type of framing is:
 ## Limitations
 
 The dataset is relatively small and model performance varies across different news events. Event-level distribution shift and class imbalance remain important limitations.
+The deployed Streamlit prototype uses the sentence-embedding classifiers, while the fine-tuned DistilBERT models were evaluated separately in the modelling notebook.
